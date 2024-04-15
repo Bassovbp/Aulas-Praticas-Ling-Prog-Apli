@@ -33,12 +33,12 @@ class Menu:
             pygame.display.flip()  # flip atualiza a tela OBS: tem que ficar após o ultimo elemento de desenhar na tela
 
             # verificar eventos
-            for event in pygame.event.get():  # interação com cliques, teclas
+            for event in pygame.event.get():     # interação com cliques, teclas
                 if event.type == pygame.QUIT:
-                    pygame.quit()  # aqui fecha o pygame, mas ainda rodaria o resto e daria erro.
-                    sys.exit()  # com o sys exit ele finaliza tudo.
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_DOWN:    # se a seta para baixo for pressionada
+                    pygame.quit()            # aqui fecha o pygame, mas ainda rodaria o resto e daria erro.
+                    sys.exit()                          # com o sys exit ele finaliza tudo.
+                if event.type == pygame.KEYDOWN:                # testar se alguma tecla foi pressionada
+                    if event.key == pygame.K_DOWN:   # se a seta para baixo for pressionada
                         if menu_option < len(MENU_OPTION)-1:
                             menu_option += 1
                         else:
@@ -49,7 +49,7 @@ class Menu:
                         else:
                             menu_option = len(MENU_OPTION)-1
                     if event.key == pygame.K_RETURN:   # se enter for pressionado
-                        return menu_option
+                        return MENU_OPTION[menu_option]  # retorna o texto do menu
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name='Lucida Sans Typewriter', size=text_size)
